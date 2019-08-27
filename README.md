@@ -44,6 +44,15 @@ Now we are going to configure RKE to connect to these servers to build a Kuberne
 
 Next we want to configure the backup settings for the cluster. Our Terraform plan from above created an S3 bucket we can use for this called `demo-rke-backup-bucket`. Update the section under the key `etcd` in the `cluster.yml` to reflect the correct settings for your AWS account. You'll need to provide it with AWS credentials that the automated job can use to upload. We recommend you create a narrow-scoped IAM user profile for this purpose. 
 
+You'll notice the etcd section of `cluster.yml` has a couple of parameters pertaining to backup behavior:
+
+```
+      interval_hours: 12
+      retention: 6
+```
+
+These settings control how often backups will occur and how many points in time should be kept in storage. Modify these to suit your needs. An active cluster might benefit from a 6 hour backup interval to capture changes to the state. 
+
 ### Step 3 - Deploying Kubernetes and starting Backup Job
 Now we can apply our settings with RKE:
 
@@ -52,6 +61,8 @@ rke up --ssh-agent-auth
 ```
 
 This will install Kubernetes on these nodes and configure automated backup. You may need to add the SSH key you are using in AWS to your agent by running `ssh-add /path/to/key`
+
+That's it. Now you have an automated backup job running periodically to protect your cluster from data loss. 
 
 ## Configuring Restore
 
