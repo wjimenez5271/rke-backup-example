@@ -1,6 +1,6 @@
 # RKE Backup and Restore Example
 
-Setting up recurring backups for Rancher server is an important part of making Rancher production-ready. Rancher relies on etcd for persisting its configuration and state. Although etcd is a distributed data store, it is not impervious to hardware failure. Consistent backups is your best defense against this type of failure, so this example will help you understand how to set this up in your own instance of Rancher. 
+Setting up recurring backups for Rancher server is an important part of making Rancher production-ready. Rancher relies on `etcd` for persisting its configuration and state. Although `etcd` is a distributed data store, it is not impervious to hardware failure. Consistent backups is your best defense against this type of failure, so this example will help you understand how to set this up in your own instance of Rancher. 
 
 Below is an example of automation to produce recurring backups in Rancher as well as the automation to perform a recovery from backup. First we are going to create an RKE cluster using terraform and EC2, and then we'll configure the backup job. 
 
