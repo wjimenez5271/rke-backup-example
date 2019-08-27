@@ -22,7 +22,7 @@ vpc_id = "
 resource_prefix = "my-name-or-unqiue-id"
 ```
 
-Replace the variables with values that correspond to your environment. These values will be used by Terraform to build EC2 instances in your AWS account. You also should have a set of AWS credentials defined per the (TF module's instructions)[https://www.terraform.io/docs/providers/aws/index.html#authentication]
+Replace the variables with values that correspond to your environment. These values will be used by Terraform to build EC2 instances in your AWS account. You also should have a set of AWS credentials defined per the [TF module's instructions](https://www.terraform.io/docs/providers/aws/index.html#authentication)
 
 
 Then run: 
